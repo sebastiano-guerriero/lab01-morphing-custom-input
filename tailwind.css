@@ -1,1 +1,84 @@
 @import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-background);
+    color: var(--color-contrast-high);
+    min-height: 100vh;
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@theme {
+  --color-background-darker: #F0EFEB;
+  --color-background-dark: #FBFAF9;
+  --color-background: #FFFFFF;
+  --color-background-light: #FFFFFF;
+  --color-background-lighter: #FFFFFF;
+  --color-contrast-low: #A3A3A3;
+  --color-contrast-medium: #535252;
+  --color-contrast-high: #0C0B09;
+  --color-brand: #FF8904;
+  --color-white: #FFFFFF;
+  --color-black: #030302;
+  --color-red: #FB2C36;
+  --color-border: oklch(from var(--color-contrast-high) l c h / 0.1);
+
+  --font-primary: "Inter", sans-serif;
+
+  --text-2xs: 0.625rem; /* 10px */
+  --text-2xs--line-height: normal;
+  --text-xs: 0.6875rem; /* 11px */
+  --text-xs--line-height: normal;
+  --text-sm: 0.75rem; /* 12px */
+  --text-sm--line-height: normal;
+  --text-base: 0.8125rem; /* 13px */
+  --text-base--line-height: normal;
+  --text-lg: 0.9375rem; /* 15px */
+  --text-lg--line-height: normal;
+  --text-xl: 1.125rem; /* 18px */
+  --text-xl--line-height: normal;
+  --text-2xl: 1.5rem; /* 24px */
+  --text-2xl--line-height: normal;
+  --text-3xl: 2rem; /* 32px */
+  --text-3xl--line-height: normal;
+
+  --shadow-2xs: 0px 1px 0px oklch(from var(--color-black) l c h / 0.075);
+  --shadow-xs:  0px 1px 1px -0.5px oklch(from var(--color-black) l c h / 0.18),
+                0px 2px 2px -1px oklch(from var(--color-black) l c h / 0.04),
+                0px 4px 4px -2px oklch(from var(--color-black) l c h / 0.02),
+                0px 8px 4px -3px oklch(from var(--color-black) l c h / 0.01);
+  --shadow-sm:  0px 1px 2px -0.5px oklch(from var(--color-black) l c h / 0.18),
+                0px 3px 3px -1px oklch(from var(--color-black) l c h / 0.04),
+                0px 6px 5px -2px oklch(from var(--color-black) l c h / 0.02),
+                0px 15px 6px -3px oklch(from var(--color-black) l c h / 0.01);
+  --shadow-md:  0px 1px 3px oklch(from var(--color-black) l c h / 0.05),
+                0px 5px 5px -1px oklch(from var(--color-black) l c h / 0.05),
+                0px 11px 6px -2px oklch(from var(--color-black) l c h / 0.03),
+                0px 19px 8px -3px oklch(from var(--color-black) l c h / 0.01);
+  --shadow-lg:  0px 2px 5px -1px oklch(from var(--color-black) l c h / 0.06),
+                0px 8px 12px -1px oklch(from var(--color-black) l c h / 0.05),
+                0px 22px 16px -2px oklch(from var(--color-black) l c h / 0.04),
+                0px 32px 18px -2px oklch(from var(--color-black) l c h / 0.01);
+  --shadow-xl:  0px 4px 8px -1px oklch(from var(--color-black) l c h / 0.06),
+                0px 15px 15px -1px oklch(from var(--color-black) l c h / 0.05),
+                0px 33px 20px -2px oklch(from var(--color-black) l c h / 0.04),
+                0px 58px 23px -2px oklch(from var(--color-black) l c h / 0.01);
+  --shadow-2xl: 0px 13px 29px oklch(from var(--color-black) l c h / 0.07),
+                0px 53px 53px oklch(from var(--color-black) l c h / 0.06),
+                0px 119px 71px oklch(from var(--color-black) l c h / 0.03),
+                0px 211px 85px oklch(from var(--color-black) l c h / 0.01);
+}
