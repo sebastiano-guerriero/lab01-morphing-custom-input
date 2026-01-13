@@ -9,8 +9,57 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900" rel="stylesheet">
   </head>
-  <body class="">
-    
+  <body class="flex">
+    <div class="bg-background m-auto w-[calc(100%-48px)] max-w-[512px] rounded-2xl p-6 shadow-sm inset-ring inset-ring-white/8 relative">
+      <header>
+        <h2>Send Money</h2>
+        <button aria-label="close-modal">
+          <svg viewBox="0 0 12 12">
+            <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" stroke="currentColor">
+              <line x1="2.25" y1="9.75" x2="9.75" y2="2.25"></line>
+              <line x1="9.75" y1="9.75" x2="2.25" y2="2.25"></line>
+            </g>
+          </svg>
+        </button>
+      </header>
+
+      <form>
+        <div>
+          <label for="recipient">Recipient Address</label>
+          <input id="recipient" name="recipient" type="text" placeholder="0x... or ENS">
+        </div>
+
+        <div>
+          <label for="select-token">Token</label>
+          <div>
+            <select name="select-token" id="select-token">
+              <option value="0">Select Option</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <p>Amount</p>
+          <ul>
+            <li>
+              <label class="" for="" aria-label="">
+                <input id="" class="sr-only" type="checkbox">
+                5.00
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <button>Send <span>$0.00</span></button>
+      </form>
+
+      <div aria-hidden="true" class="absolute inset-0 rounded-[inherit] mask-clip-padding-only p-px pointer-events-none">
+        <span class="size-2 absolute top-0 left-0 bg-white blur-[5px] opacity-70 rounded-full"></span>
+        <span class="size-2 absolute bottom-0 right-0 bg-white blur-[5px] opacity-50 rounded-full"></span>
+      </div>
+    </div>
     <script src="./main.js" defer></script>
   </body>
 </html>

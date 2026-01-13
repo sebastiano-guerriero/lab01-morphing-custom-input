@@ -7,7 +7,7 @@
     font-weight: 500;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: var(--color-background);
+    background-color: var(--color-background-dark);
     color: var(--color-contrast-high);
     min-height: 100vh;
   }
@@ -23,17 +23,16 @@
 }
 
 @theme {
-  --color-background-darker: #F0EFEB;
-  --color-background-dark: #FBFAF9;
-  --color-background: #FFFFFF;
-  --color-background-light: #FFFFFF;
-  --color-background-lighter: #FFFFFF;
-  --color-contrast-low: #A3A3A3;
-  --color-contrast-medium: #535252;
-  --color-contrast-high: #0C0B09;
-  --color-brand: #FF8904;
+  --color-background-darker: #000000;
+  --color-background-dark: #161616;
+  --color-background: #242424;
+  --color-background-light: #333333;
+  --color-contrast-low: #6B6B6B;
+  --color-contrast-medium: #ADADAD;
+  --color-contrast-high: #F5F5F5;
+  --color-brand: #F3BA2F;
   --color-white: #FFFFFF;
-  --color-black: #030302;
+  --color-black: #000000;
   --color-red: #FB2C36;
   --color-border: oklch(from var(--color-contrast-high) l c h / 0.1);
 
@@ -81,4 +80,9 @@
                 0px 53px 53px oklch(from var(--color-black) l c h / 0.06),
                 0px 119px 71px oklch(from var(--color-black) l c h / 0.03),
                 0px 211px 85px oklch(from var(--color-black) l c h / 0.01);
+}
+
+@utility mask-clip-padding-only {
+  mask: linear-gradient(black, black) content-box, linear-gradient(black, black);
+  mask-composite: exclude;
 }
