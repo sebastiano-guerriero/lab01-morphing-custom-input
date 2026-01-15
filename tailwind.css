@@ -5,6 +5,7 @@
     font-family: var(--font-primary);
     font-size: var(--text-base);
     font-weight: 500;
+    font-variant-numeric: slashed-zero;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--color-background-dark);
@@ -20,6 +21,10 @@
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
+
+  ::placeholder {
+    color: var(--color-contrast-low);
+  }
 }
 
 @theme {
@@ -27,6 +32,9 @@
   --color-background-dark: #161616;
   --color-background: #242424;
   --color-background-light: #333333;
+  --color-background-lighter: #404040;
+  --color-contrast-lowest: #393939;
+  --color-contrast-lower: #6B6B6B;
   --color-contrast-low: #6B6B6B;
   --color-contrast-medium: #ADADAD;
   --color-contrast-high: #F5F5F5;
