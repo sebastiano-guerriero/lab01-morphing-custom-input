@@ -103,15 +103,15 @@
               </li>
   
               <li class="grow">
-                <label id="custom-input-btn" class="sm:text-lg h-10 w-full rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer has-checked:bg-brand/20 has-checked:text-brand has-checked:inset-ring-brand/20 select-none" for="amount-custom">
+                <label id="custom-input-btn" class="sm:text-lg h-10 w-full rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer select-none" for="amount-custom">
                   <input id="amount-custom" name="amount" class="sr-only" type="radio" value="custom">
                   Custom
                 </label>
               </li>
             </ul>
 
-            <div class="absolute top-0 right-0">
-              <input id="input-custom-amount" class="h-10 text-lg w-24 rounded-full block px-5 bg-contrast-high/10 inset-ring-1 inset-ring-contrast-high/10 data-active:bg-background-dark data-active:inset-ring data-active:inset-ring-contrast-high/12 data-active:inset-shadow-[0_-1px_0_hsl(from_var(--color-contrast-high)_h_s_l/0.15)]" type="text">
+            <div class="absolute top-0 left-0 pointer-events-none">
+              <input id="input-custom-amount" class="h-10 text-lg rounded-full block px-5 bg-contrast-high/10 inset-ring-1 inset-ring-contrast-high/10 pointer-events-none opacity-0 data-active:bg-background-dark data-active:inset-ring data-active:inset-ring-contrast-high/12 data-active:inset-shadow-[0_-1px_0_hsl(from_var(--color-contrast-high)_h_s_l/0.15)] data-active:pointer-events-auto data-active:opacity-100 transition" type="text">
   
               <!-- <span id="animated-placeholder" class="absolute left-5 text-lg top-1/2 -translate-y-1/2 text-contrast-low" aria-hidden="true">0.00</span> -->
             </div>
