@@ -72,42 +72,46 @@
 
         <div>
           <p class="text-contrast-medium inline-block mb-1 select-none">Amount</p>
-          <ul class="flex gap-1.5">
-            <li class="grow">
-              <label class="h-10 w-full rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer has-checked:bg-brand/20 has-checked:text-brand has-checked:inset-ring-brand/20 select-none" for="amount-5">
-                <input id="amount-5" name="amount" class="sr-only" type="radio" value="5.00">
-                5.00
-              </label>
-            </li>
+          <div class="relative">
+            <ul class="flex gap-1.5">
+              <li class="grow">
+                <label class="h-10 w-full rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer has-checked:bg-brand/20 has-checked:text-brand has-checked:inset-ring-brand/20 select-none" for="amount-5">
+                  <input id="amount-5" name="amount" class="sr-only" type="radio" value="5.00">
+                  5.00
+                </label>
+              </li>
+  
+              <li class="grow">
+                <label class="h-10 w-full rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer has-checked:bg-brand/20 has-checked:text-brand has-checked:inset-ring-brand/20 select-none" for="amount-10">
+                  <input id="amount-10" name="amount" class="sr-only" type="radio" value="10.00">
+                  10.00
+                </label>
+              </li>
+  
+              <li class="grow">
+                <label class="h-10 w-full rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer has-checked:bg-brand/20 has-checked:text-brand has-checked:inset-ring-brand/20 select-none" for="amount-100">
+                  <input id="amount-100" name="amount" class="sr-only" type="radio" value="100.00">
+                  100.00
+                </label>
+              </li>
+  
+              <li class="grow">
+                <label class="h-10 w-full rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer has-checked:bg-brand/20 has-checked:text-brand has-checked:inset-ring-brand/20 select-none" for="amount-1000">
+                  <input id="amount-1000" name="amount" class="sr-only" type="radio" value="1000.00">
+                  1000.00
+                </label>
+              </li>
+  
+              <li class="grow">
+                <label class="h-10 w-full rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer has-checked:bg-brand/20 has-checked:text-brand has-checked:inset-ring-brand/20 select-none" for="amount-custom">
+                  <input id="amount-custom" name="amount" class="sr-only" type="radio" value="custom">
+                  Custom
+                </label>
+              </li>
+            </ul>
 
-            <li class="grow">
-              <label class="h-10 w-full rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer has-checked:bg-brand/20 has-checked:text-brand has-checked:inset-ring-brand/20 select-none" for="amount-10">
-                <input id="amount-10" name="amount" class="sr-only" type="radio" value="10.00">
-                10.00
-              </label>
-            </li>
-
-            <li class="grow">
-              <label class="h-10 w-full rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer has-checked:bg-brand/20 has-checked:text-brand has-checked:inset-ring-brand/20 select-none" for="amount-100">
-                <input id="amount-100" name="amount" class="sr-only" type="radio" value="100.00">
-                100.00
-              </label>
-            </li>
-
-            <li class="grow">
-              <label class="h-10 w-full rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer has-checked:bg-brand/20 has-checked:text-brand has-checked:inset-ring-brand/20 select-none" for="amount-1000">
-                <input id="amount-1000" name="amount" class="sr-only" type="radio" value="1000.00">
-                1000.00
-              </label>
-            </li>
-
-            <li class="grow">
-              <label class="h-10 w-full rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer has-checked:bg-brand/20 has-checked:text-brand has-checked:inset-ring-brand/20 select-none" for="amount-custom">
-                <input id="amount-custom" name="amount" class="sr-only" type="radio" value="custom">
-                Custom
-              </label>
-            </li>
-          </ul>
+            <input id="input-custom-amount" class="bg-background-dark h-10 text-lg rounded-full block w-full px-5 inset-ring inset-ring-contrast-high/12 inset-shadow-[0_-1px_0_hsl(from_var(--color-contrast-high)_h_s_l/0.15)] focus-visible:outline-none focus-visible:inset-ring-contrast-high/20 absolute top-0 left-0" type="text" placeholder="0.00">
+          </div>
         </div>
 
         <button class="relative bg-contrast-medium h-10 rounded-full text-center text-background shadow-xs bg-linear-to-t from-transparent to-white/50 inset-shadow-2xs inset-shadow-white hover:bg-[oklch(from_var(--color-contrast-medium)_calc(l*1.05)_c_h)]">Send <span>$0.00</span>
@@ -122,7 +126,7 @@
         <span class="size-2 absolute bottom-0 right-0 bg-white blur-[5px] opacity-50 rounded-full"></span>
       </div>
     </div>
-    <script src="./main.js" defer></script>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
 
