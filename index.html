@@ -5,12 +5,11 @@
     <title>Component Tutorial Starter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900" rel="stylesheet">
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   </head>
   <body class="flex">
-    <div class="bg-background m-auto w-[calc(100%-48px)] max-w-[512px] rounded-2xl p-6 shadow-sm inset-ring inset-ring-white/8 relative">
+    <div class="bg-background m-auto w-[calc(100%-32px)] max-w-[512px] rounded-2xl p-6 shadow-sm inset-ring inset-ring-white/8 relative">
       <header class="flex justify-between mb-6">
         <div class="flex items-center gap-4">
           <div class="size-13.5 inset-ring-contrast-lowest inset-ring">
@@ -111,21 +110,21 @@
             </ul>
 
             <div class="absolute top-0 left-0 pointer-events-none">
-              <input id="input-custom-amount" class="h-10 text-lg rounded-full block px-5 bg-contrast-high/10 inset-ring-1 inset-ring-contrast-high/10 pointer-events-none opacity-0 data-active:bg-background-dark data-active:inset-ring data-active:inset-ring-contrast-high/12 data-active:inset-shadow-[0_-1px_0_hsl(from_var(--color-contrast-high)_h_s_l/0.15)] data-active:pointer-events-auto data-active:opacity-100 transition" type="text">
+              <input id="input-custom-amount" class="h-10 text-lg rounded-full block px-5 bg-contrast-high/10 inset-ring-1 inset-ring-contrast-high/10 pointer-events-none opacity-0 data-active:bg-background-dark data-active:inset-ring data-active:inset-ring-contrast-high/12 data-active:inset-shadow-[0_-1px_0_hsl(from_var(--color-contrast-high)_h_s_l/0.15)] data-active:pointer-events-auto data-active:opacity-100 transition data-active:focus-visible:outline-none data-active:focus-visible:inset-ring-contrast-high/20" type="text">
   
               <!-- <span id="animated-placeholder" class="absolute left-5 text-lg top-1/2 -translate-y-1/2 text-contrast-low" aria-hidden="true">0.00</span> -->
             </div>
 
-            <div id="btns-small" class="absolute top-0 left-0 pointer-events-none flex gap-1.5">
-              <button class="text-lg data-minimize:text-xs h-4.5 px-[6px] rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer transition-[font-size] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">5.00</button>
-              <button class="text-lg data-minimize:text-xs h-4.5 px-[6px] rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer transition-[font-size] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">10.00</button>
-              <button class="text-lg data-minimize:text-xs h-4.5 px-[6px] rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer transition-[font-size] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">100.00</button>
-              <button class="text-lg data-minimize:text-xs h-4.5 px-[6px] rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer transition-[font-size] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">1000.00</button>
+            <div id="btns-small" class="absolute top-0 left-0 pointer-events-none data-active:pointer-events-auto flex gap-1.5">
+              <button class="backdrop-blur-sm text-lg data-minimize:text-xs h-4.5 px-[6px] rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer transition-[font-size] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] active:translate-y-px">5.00</button>
+              <button class="backdrop-blur-sm text-lg data-minimize:text-xs h-4.5 px-[6px] rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer transition-[font-size] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] active:translate-y-px">10.00</button>
+              <button class="backdrop-blur-sm text-lg data-minimize:text-xs h-4.5 px-[6px] rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer transition-[font-size] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] active:translate-y-px">100.00</button>
+              <button class="backdrop-blur-sm text-lg data-minimize:text-xs h-4.5 px-[6px] rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer transition-[font-size] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] active:translate-y-px">1000.00</button>
             </div>
           </div>
         </div>
 
-        <button id="send-button" class="inline-flex justify-center items-center relative bg-contrast-medium h-10 rounded-full text-center text-background shadow-xs bg-linear-to-t from-transparent to-white/50 inset-shadow-2xs inset-shadow-white hover:bg-[oklch(from_var(--color-contrast-medium)_calc(l*1.05)_c_h)] data-push:mt-[30px] transition-[margin-top] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">Send <span>$0.00</span>
+        <button id="send-button" class="inline-flex justify-center items-center gap-1 relative bg-contrast-medium h-10 rounded-full text-center text-background shadow-xs bg-linear-to-t from-transparent to-white/50 inset-shadow-2xs inset-shadow-white hover:bg-[oklch(from_var(--color-contrast-medium)_calc(l*1.05)_c_h)] data-push:mt-[30px] transition-[margin-top] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">Send  <span class="js-amount">$0.00</span>
           <figure class="size-6 rounded-full absolute right-2 top-2 bg-background-darker flex ring-1 ring-background-darker inset-ring-1 inset-ring-white/20 shadow-sm inset-shadow-[1px_1px_0_hsl(from_var(--color-brand)_h_s_l/0.2)]">
             <svg class="size-3 text-brand m-auto" x="0px" y="0px" width="12px" height="12px" viewBox="0 0 12 12"><line x1="1" y1="6" x2="10.75" y2="6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" data-color="color-2"></line><polyline points="7.75 9.25 11 6 7.75 2.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></polyline></svg>
           </figure>

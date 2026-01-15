@@ -19,6 +19,33 @@ document.addEventListener("DOMContentLoaded", () => {
   // Get all buttons from btns-small
   const smallButtons = Array.from(btnsSmall.querySelectorAll('button'));
   
+  // Get js-amount element
+  const jsAmount = document.querySelector('.js-amount');
+  
+  // Function to update js-amount display
+  function updateAmountDisplay(value) {
+    if (jsAmount) {
+      const numValue = parseFloat(value) || 0;
+      jsAmount.textContent = `$${numValue.toFixed(2)}`;
+    }
+  }
+  
+  // Add event listeners to all radio buttons (initial state)
+  const allRadioInputs = btnsLarge.querySelectorAll('input[type="radio"]');
+  allRadioInputs.forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      if (e.target.checked && e.target.value !== 'custom') {
+        updateAmountDisplay(e.target.value);
+      }
+    });
+  });
+  
+  // Add input event listener to custom input
+  customInput.addEventListener('input', (e) => {
+    const value = e.target.value;
+    updateAmountDisplay(value);
+  });
+  
   // Initially position buttons absolutely on top of their corresponding labels
   amountLabels.forEach((label, index) => {
     if (index >= smallButtons.length) return;
@@ -64,6 +91,13 @@ document.addEventListener("DOMContentLoaded", () => {
     customInput.style.width = `${buttonWidth}px`;
     customInput.style.opacity = '1'; // Show instantly
     
+    // Reset input value and set placeholder
+    customInput.value = '';
+    customInput.placeholder = '0.00';
+    
+    // Reset js-amount to $0.00
+    updateAmountDisplay('0.00');
+    
     customInput.setAttribute('data-active', '');
     
     // Now animate the position and width
@@ -81,6 +115,9 @@ document.addEventListener("DOMContentLoaded", () => {
       type: "spring",
       duration: 0.3,
       bounce: 0
+    }).finished.then(() => {
+      // Focus the input after animation completes
+      customInput.focus();
     });
     
     // Hide original labels immediately when buttons become visible
@@ -118,6 +155,27 @@ document.addEventListener("DOMContentLoaded", () => {
       const left = currentLeft;
       currentLeft += width + 6; // button width + 6px gap
       return left;
+    });
+    
+    // Add data-active to btns-small container to enable pointer events
+    btnsSmall.setAttribute('data-active', '');
+    
+    // Add click handlers to buttons to update input value
+    smallButtons.forEach((btn, index) => {
+      // Get the value from the corresponding label's radio input
+      const correspondingLabel = amountLabels[index];
+      if (correspondingLabel) {
+        const radioInput = correspondingLabel.querySelector('input[type="radio"]');
+        const value = radioInput ? radioInput.value : btn.textContent.trim();
+        
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          customInput.value = value;
+          updateAmountDisplay(value);
+          customInput.focus();
+        });
+      }
     });
     
     // Animate buttons from label positions to final position (top: 52px)
