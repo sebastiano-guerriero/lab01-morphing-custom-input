@@ -103,14 +103,18 @@
               </li>
   
               <li class="grow">
-                <label class="h-10 w-full rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer has-checked:bg-brand/20 has-checked:text-brand has-checked:inset-ring-brand/20 select-none" for="amount-custom">
+                <label id="custom-input-btn" class="h-10 w-full rounded-full bg-contrast-high/10 inline-flex items-center justify-center inset-ring-1 inset-ring-contrast-high/10 cursor-pointer has-checked:bg-brand/20 has-checked:text-brand has-checked:inset-ring-brand/20 select-none" for="amount-custom">
                   <input id="amount-custom" name="amount" class="sr-only" type="radio" value="custom">
                   Custom
                 </label>
               </li>
             </ul>
 
-            <input id="input-custom-amount" class="bg-background-dark h-10 text-lg rounded-full block w-full px-5 inset-ring inset-ring-contrast-high/12 inset-shadow-[0_-1px_0_hsl(from_var(--color-contrast-high)_h_s_l/0.15)] focus-visible:outline-none focus-visible:inset-ring-contrast-high/20 absolute top-0 left-0" type="text" placeholder="0.00">
+            <div class="absolute top-0 left-0 w-full">
+              <input id="input-custom-amount" class="bg-background-dark h-10 text-lg rounded-full block w-full px-5 inset-ring inset-ring-contrast-high/12 inset-shadow-[0_-1px_0_hsl(from_var(--color-contrast-high)_h_s_l/0.15)] focus-visible:outline-none focus-visible:inset-ring-contrast-high/20 " type="text" placeholder="0.00">
+  
+              <span id="animated-placeholder" class="absolute left-5 text-lg top-1/2 -translate-y-1/2 text-contrast-low" aria-hidden="true">0.00</span>
+            </div>
           </div>
         </div>
 
