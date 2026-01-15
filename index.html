@@ -41,7 +41,7 @@
         <div>
           <label class="text-contrast-medium inline-block mb-1 select-none" for="select-token">Token</label>
           <div class="relative">
-            <select class="bg-background-light bg-linear-to-t from-transparent to-white/10 block w-full h-10 rounded-full px-5 appearance-none shadow-xs inset-ring inset-ring-white/6 inset-shadow-2xs inset-shadow-white/8 cursor-pointer hover:bg-background-lighter ring-1 ring-black/35" name="select-token" id="select-token">
+            <select class="bg-background-light bg-linear-to-t from-transparent to-white/10 block w-full h-10 rounded-full px-5 appearance-none shadow-xs inset-ring inset-ring-white/6 inset-shadow-2xs inset-shadow-white/8 cursor-pointer hover:bg-background-lighter ring-1 ring-black/35 focus-visible:outline-1 focus-visible:outline-contrast-high focus-visible:outline-offset-3" name="select-token" id="select-token">
               <option value="0">USD1 - 1.0100 available</option>
               <option value="1">USD1 - 1.0100 available</option>
               <option value="2">USD1 - 1.0100 available</option>
@@ -52,6 +52,11 @@
                 <polyline points="1.75 4.25 6 8.5 10.25 4.25"></polyline>
               </g>
             </svg>
+
+            <div class="absolute inset-0 rounded-full pointer-events-none mask-clip-padding-only p-px" aria-hidden="true">
+              <span class="size-3 absolute top-0 left-0 bg-white rounded-full blur-xs"></span>
+              <span class="size-3 absolute bottom-0 right-0 bg-white/30 rounded-full blur-xs"></span>
+            </div>
           </div>
         </div>
 
@@ -95,8 +100,10 @@
           </ul>
         </div>
 
-        <button class="bg-contrast-medium h-10 rounded-full text-center text-background shadow-xs bg-linear-to-t from-transparent to-white/50 inset-shadow-2xs inset-shadow-white hover:bg-[oklch(from_var(--color-contrast-medium)_calc(l*1.05)_c_h)]">Send <span>$0.00</span>
-          
+        <button class="relative bg-contrast-medium h-10 rounded-full text-center text-background shadow-xs bg-linear-to-t from-transparent to-white/50 inset-shadow-2xs inset-shadow-white hover:bg-[oklch(from_var(--color-contrast-medium)_calc(l*1.05)_c_h)]">Send <span>$0.00</span>
+          <figure class="size-6 rounded-full absolute right-2 top-2 bg-background-darker flex ring-1 ring-background-darker inset-ring-1 inset-ring-white/20 shadow-sm inset-shadow-[1px_1px_0_hsl(from_var(--color-brand)_h_s_l/0.2)]">
+            <svg class="size-3 text-brand m-auto" x="0px" y="0px" width="12px" height="12px" viewBox="0 0 12 12"><line x1="1" y1="6" x2="10.75" y2="6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" data-color="color-2"></line><polyline points="7.75 9.25 11 6 7.75 2.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></polyline></svg>
+          </figure>
         </button>
       </form>
 
