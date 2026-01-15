@@ -3,38 +3,75 @@ import { animate } from 'https://cdn.jsdelivr.net/npm/motion@latest/+esm';
 document.addEventListener("DOMContentLoaded", () => {
   const customButton = document.getElementById('custom-input-btn');
   const customInput = document.getElementById('input-custom-amount');
-  const inputContainer = customInput.parentElement; // div with "absolute top-0 right-0"
-  const amountContainer = inputContainer.parentElement; // div with "relative"
+  const inputContainer = customInput.parentElement;
+  const amountContainer = inputContainer.parentElement;
+  const btnsLarge = document.getElementById('btns-large');
+  const btnsSmall = document.getElementById('btns-small');
+  const sendButton = document.getElementById('send-button');
   
-  if (!customButton || !customInput || !inputContainer || !amountContainer) return;
+  if (!customButton || !customInput || !inputContainer || !amountContainer || !btnsLarge || !btnsSmall || !sendButton) return;
   
-  customButton.addEventListener('click', () => {
-    // Get the Custom button's position and size relative to the amount container
-    const buttonRect = customButton.getBoundingClientRect();
+  // Get all label elements from btns-large (excluding custom)
+  const amountLabels = Array.from(btnsLarge.querySelectorAll('label')).filter(
+    label => label !== customButton
+  );
+  
+  // Get all buttons from btns-small
+  const smallButtons = Array.from(btnsSmall.querySelectorAll('button'));
+  
+  // Initially position buttons absolutely on top of their corresponding labels
+  amountLabels.forEach((label, index) => {
+    if (index >= smallButtons.length) return;
+    
+    const smallBtn = smallButtons[index];
+    const labelRect = label.getBoundingClientRect();
     const containerRect = amountContainer.getBoundingClientRect();
     
-    // Calculate position relative to the container
+    // Position button on top of label
+    const labelLeft = labelRect.left - containerRect.left;
+    const labelTop = labelRect.top - containerRect.top;
+    const labelWidth = labelRect.width;
+    const labelHeight = labelRect.height;
+    
+    // Set button to absolute positioning, matching label's position and size
+    // Don't set fontSize - let CSS handle it via data-minimize
+    smallBtn.style.position = 'absolute';
+    smallBtn.style.left = `${labelLeft}px`;
+    smallBtn.style.top = `${labelTop}px`;
+    smallBtn.style.width = `${labelWidth}px`;
+    smallBtn.style.height = `${labelHeight}px`;
+    smallBtn.style.opacity = '0';
+  });
+  
+  customButton.addEventListener('click', () => {
+    const containerRect = amountContainer.getBoundingClientRect();
+    
+    // Get button position and size before hiding it
+    const buttonRect = customButton.getBoundingClientRect();
     const buttonLeft = buttonRect.left - containerRect.left;
     const buttonTop = buttonRect.top - containerRect.top;
     const buttonWidth = buttonRect.width;
     const finalWidth = containerRect.width;
     
-    // Position input container at button's location with button's width
+    // Hide custom button instantly (no transition)
+    customButton.style.opacity = '0';
+    customButton.style.pointerEvents = 'none';
+    
+    // Position input at button's location and make it visible instantly
     inputContainer.style.left = `${buttonLeft}px`;
     inputContainer.style.top = `${buttonTop}px`;
     inputContainer.style.right = 'auto';
     customInput.style.width = `${buttonWidth}px`;
+    customInput.style.opacity = '1'; // Show instantly
     
-    // Add data-active attribute to change the style, enable pointer events, and make visible
     customInput.setAttribute('data-active', '');
     
-    // Animate the input container left position and input width simultaneously
-    // This makes it expand to the left
+    // Now animate the position and width
     animate(inputContainer, {
       left: [buttonLeft, 0]
     }, {
       type: "spring",
-      duration: 0.4,
+      duration: 0.3,
       bounce: 0
     });
     
@@ -42,9 +79,81 @@ document.addEventListener("DOMContentLoaded", () => {
       width: [buttonWidth, finalWidth]
     }, {
       type: "spring",
-      duration: 0.4,
+      duration: 0.3,
       bounce: 0
     });
+    
+    // Hide original labels immediately when buttons become visible
+    amountLabels.forEach(label => {
+      label.style.opacity = '0';
+      label.style.pointerEvents = 'none';
+    });
+    
+    // Add data-minimize to all buttons
+    smallButtons.forEach(btn => {
+      btn.setAttribute('data-minimize', '');
+    });
+    
+    // Force reflow to get final dimensions with data-minimize applied
+    void btnsSmall.offsetWidth;
+    
+    // Calculate final widths for all buttons first
+    const finalWidths = smallButtons.map(btn => {
+      // Create a temporary element to measure text width with text-xs
+      const tempSpan = document.createElement('span');
+      tempSpan.style.position = 'absolute';
+      tempSpan.style.visibility = 'hidden';
+      tempSpan.style.fontSize = '0.75rem'; // text-xs
+      tempSpan.style.whiteSpace = 'nowrap';
+      tempSpan.textContent = btn.textContent.trim();
+      document.body.appendChild(tempSpan);
+      const textWidth = tempSpan.getBoundingClientRect().width;
+      document.body.removeChild(tempSpan);
+      return textWidth + 12; // 6px padding on each side
+    });
+    
+    // Calculate final left positions with 6px gap
+    let currentLeft = 0;
+    const finalLefts = finalWidths.map(width => {
+      const left = currentLeft;
+      currentLeft += width + 6; // button width + 6px gap
+      return left;
+    });
+    
+    // Animate buttons from label positions to final position (top: 52px)
+    amountLabels.forEach((label, index) => {
+      if (index >= smallButtons.length) return;
+      
+      const smallBtn = smallButtons[index];
+      const labelRect = label.getBoundingClientRect();
+      const labelLeft = labelRect.left - containerRect.left;
+      const labelTop = labelRect.top - containerRect.top;
+      const labelWidth = labelRect.width;
+      const labelHeight = 40; // h-10 = 40px
+      
+      const finalBtnWidth = finalWidths[index];
+      const finalBtnLeft = finalLefts[index];
+      const finalBtnHeight = 18; // h-4.5 = 18px
+      const finalTop = 52;
+      
+      // Make button visible
+      smallBtn.style.opacity = '1';
+      
+      // Animate width, height, top, and left position
+      animate(smallBtn, {
+        left: [labelLeft, finalBtnLeft],
+        top: [labelTop, finalTop],
+        width: [labelWidth, finalBtnWidth],
+        height: [labelHeight, finalBtnHeight]
+      }, {
+        type: "spring",
+        duration: 0.3,
+        bounce: 0
+      });
+    });
+    
+    // Add data-push to send button
+    sendButton.setAttribute('data-push', '');
   });
 });
 
